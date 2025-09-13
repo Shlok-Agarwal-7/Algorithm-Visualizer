@@ -2,7 +2,7 @@ import React from 'react'
 
 const sortingAlgorithms = () => {
   return (
-    <div className='primary'>sortingAlgorithms</div>
+    <div className='primary'>sortingAlgorithms....</div>
   )
 }
 
