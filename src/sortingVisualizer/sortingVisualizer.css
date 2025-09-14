@@ -1,0 +1,20 @@
+.array-container{
+    display: flex;
+    height:  90vh;
+    align-items: flex-end;
+    justify-content: center;
+    margin : 5px 10px
+
+}
+
+.array-bar{
+    width: 2px;
+    display: inline-block;
+    margin : 0 1px;
+}
+
+.buttons-container{
+    display: flex;
+    gap : 12px
+}
+

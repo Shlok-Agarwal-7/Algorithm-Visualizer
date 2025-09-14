@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import sortingAlgorithms from "./sortingAlgorithms/sortingAlgorithms";
+import SortingAlgorithms from "./sortingVisualizer/sortingVisualizer.jsx";
 
 function App() {
- <sortingAlgorithms/>
+    return(
+        <SortingAlgorithms/>
+    )
 }
 
 export default App;
