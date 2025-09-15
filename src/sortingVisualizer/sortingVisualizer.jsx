@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./sortingVisualizer.css"
 
-import {playMergeSortAnimations,playBubbleSortAnimations} from "../animators/sortingAnimators"
+import {playMergeSortAnimations,playBubbleSortAnimations,playQuickSortAnimations} from "../animators/sortingAnimators"
 
 const SortingAlgorithms = () => {
   const [array, setArray] = useState([]);
@@ -23,9 +23,9 @@ const SortingAlgorithms = () => {
         ))}
       </div>
       <div className="buttons-container">
-        <button onClick={() => playMergeSortAnimations(array.slice())}> mergeSort </button>
+        <button onClick={() => playMergeSortAnimations(array)}> mergeSort </button>
         <button onClick={() => playBubbleSortAnimations(array)}> bubbleSort </button>
-        <button> quickSort </button>
+        <button onClick={() => playQuickSortAnimations(array)}> quickSort </button>
       </div>
     </>
   );
