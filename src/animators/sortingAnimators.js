@@ -2,6 +2,7 @@ import { getMergeSortAnimations } from "../sortingHelpers/mergeSort";
 import { getBubbleSortAnimations } from "../sortingHelpers/bubbleSort";
 import { getQuickSortAnimations } from "../sortingHelpers/quickSort";
 import { getInsertionSortAnimations } from "../sortingHelpers/insertionSort";
+import { getradixSortAnimations } from "../sortingHelpers/radixSort";
 
 const ANIMATION_SPEED = 3;
 const PRIMARY_COLOUR = "pink";
@@ -36,7 +37,7 @@ export function playBubbleSortAnimations(array) {
 
   setTimeout(() => {
     playSortingFinishAnimation();
-  }, 1 * animations.length);
+  }, ANIMATION_SPEED * animations.length);
 }
 
 export function playMergeSortAnimations(array) {
@@ -122,7 +123,33 @@ export function playInsertionSortAnimations(array) {
   }
   setTimeout(() => {
     playSortingFinishAnimation();
-  }, ANIMATION_SPEED * animations.length);
+  }, (ANIMATION_SPEED + 3) * animations.length);
+}
+
+export function playRadixSortAnimations(array){
+  const animations = getradixSortAnimations(array);
+  for (let i = 0; i < animations.length; i++) {
+    const [animationType, barOneIdx, newHeight1] = animations[i];
+    const arrayBars = document.getElementsByClassName("array-bar");
+    const barOneStyle = arrayBars[barOneIdx].style;
+
+    if (animationType === "swapToSecondary") {
+      setTimeout(() => {
+        barOneStyle.backgroundColor = SECONDARY_COLOUR;
+      }, i * (ANIMATION_SPEED + 3));
+    } else if (animationType === "swapToPrimary") {
+      setTimeout(() => {
+        barOneStyle.backgroundColor = PRIMARY_COLOUR;
+      }, i * (ANIMATION_SPEED + 3));
+    } else if (animationType === "swapHeights") {
+      setTimeout(() => {
+        barOneStyle.height = `${newHeight1}px`;
+      }, i * (ANIMATION_SPEED + 3));
+    }
+  }
+  setTimeout(() => {
+    playSortingFinishAnimation();
+  }, (ANIMATION_SPEED + 3) * animations.length);
 }
 
 function playSortingFinishAnimation() {

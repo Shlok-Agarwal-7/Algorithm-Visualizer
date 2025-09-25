@@ -6,6 +6,7 @@ import {
   playBubbleSortAnimations,
   playQuickSortAnimations,
   playInsertionSortAnimations,
+  playRadixSortAnimations
 } from "../animators/sortingAnimators";
 
 const SortingAlgorithms = () => {
@@ -44,6 +45,10 @@ const SortingAlgorithms = () => {
           {" "}
           InsertionSort{" "}
         </button>
+        <button onClick={() => playRadixSortAnimations(array)}>
+          {" "}
+          RadixSort{" "}
+        </button> 
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-function getradixSortAnimations(arr) {
+export function getradixSortAnimations(arr) {
   // Find the maximum number to know number of digits
   const maxNumber = getMax(arr);
   // Create a shallow copy where the sorted values will be kept
@@ -12,14 +12,18 @@ function getradixSortAnimations(arr) {
   for (let exp = 1; Math.floor(maxNumber / exp) > 0; exp *= 10) {
     // Get the Count sort iteration
     const sortedIteration = countingSort(sortedArr, exp,animations);
+    for(let i = 0 ; i < sortedIteration.length ; ++i){
+        if(sortedIteration[i] != sortedArr[i]){
+            animations.push(["swapHeights",i,sortedIteration[i]]);
+        }
+    }
     sortedArr = sortedIteration;
   }
-
 
   return animations;
 }
 
-function countingSort(arr, exp) {
+function countingSort(arr, exp,animations) {
   const length = arr.length;
   let output = Array(length); // output array
   let count = Array(10).fill(0, 0);
@@ -27,6 +31,8 @@ function countingSort(arr, exp) {
   // Store count of occurrences in count[]
   for (let i = 0; i < length; i++) {
     const digit = Math.floor(arr[i] / exp) % 10;
+    animations.push(["swapToSecondary",i])
+    animations.push(["swapToPrimary",i]) 
     count[digit]++;
   }
 
