@@ -4,23 +4,25 @@ export function getInsertionSortAnimations(array) {
   return animations;
 }
 
-function insertionSortHelper(array, animations){
+function insertionSortHelper(array, animations) {
   const n = array.length;
   for (let i = 1; i < n; ++i) {
     const key = array[i];
     let j = i - 1;
 
-    
     while (j >= 0 && array[j] > key) {
-        animations.push(["swapToSecondary", j]);
-        animations.push(["swapToPrimary", j]);
-      animations.push(["swapHeights", j + 1, array[j]]);
+      animations.push({ type: "changeColorToSecondary", indices: [j] });
+      animations.push({ type: "changeColorToPrimary", indices: [j] });
+      animations.push({
+        type: "swapHeights",
+        indices: [j + 1],
+        heights: [array[j]],
+      });
       array[j + 1] = array[j];
       j = j - 1;
     }
 
-    animations.push(["swapHeights", j + 1, key]);
+    animations.push({ type: "swapHeights", indices: [j + 1], heights: [key] });
     array[j + 1] = key;
   }
-    
 }
